@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smiles & Saplings - Turning Kindness Into Trees</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #0a0a0a;
+            overflow-x: hidden;
+            background: #fafafa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+            animation: pulse 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(20px, -20px); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #22c55e;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 24px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 40px;
+            opacity: 0.7;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(34,197,94,0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: clamp(60px, 10vw, 120px) 24px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 64px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: #fafafa;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .step {
+            padding: 40px;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            border-color: #22c55e;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .step-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 12px;
+        }
+
+        .step h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .note {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 4px solid #22c55e;
+            font-size: 15px;
+            color: #333;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-intro {
+            margin-bottom: 40px;
+            color: #666;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .form-intro strong {
+            color: #0a0a0a;
+            font-weight: 600;
+        }
+
+        .form-highlight {
+            margin-top: 20px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(59,130,246,0.1) 100%);
+            border-radius: 12px;
+            font-weight: 600;
+            color: #0a0a0a;
+        }
+
+        .form-embed {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            border-radius: 16px;
+            background: #fafafa;
+        }
+
+        /* Tracker Section */
+        .tracker {
+            background: #0a0a0a;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tracker::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(34,197,94,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(59,130,246,0.1) 0%, transparent 50%);
+        }
+
+        .tracker .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            padding: 48px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(34,197,94,0.3);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -2px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .tracker-note {
+            margin-top: 48px;
+            opacity: 0.6;
+            text-align: center;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #fafafa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+            border-color: transparent;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .gallery-caption {
+            padding: 32px;
+        }
+
+        .gallery-caption h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .gallery-caption p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-intro {
+            max-width: 600px;
+            margin: 0 auto 48px;
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 16px 32px;
+            background: #0a0a0a;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .contact-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 48px 24px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Mobile Nav */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .step {
+                padding: 32px 24px;
+            }
+
+            .stat-card {
+                padding: 32px 24px;
+            }
+
+            .gallery-caption {
+                padding: 24px;
+            }
+        }
+
+        /* Smooth animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .step, .stat-card, .gallery-item {
+                animation: fadeInUp 0.6s ease-out forwards;
+                opacity: 0;
+            }
+
+            .step:nth-child(1) { animation-delay: 0.1s; }
+            .step:nth-child(2) { animation-delay: 0.2s; }
+            .step:nth-child(3) { animation-delay: 0.3s; }
+
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">🌿 Smiles & Saplings</div>
+            <ul class="nav-links">
+                <li><a href="#how">How it works</a></li>
+                <li><a href="#add-smile">Share</a></li>
+                <li><a href="#tracker">Impact</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    Turning <span class="hero-highlight">kindness</span> into trees
+                </h1>
+                <p>Every 10 smiles shared = 1 tree planted. Share a good deed, make someone smile, and help grow a greener planet.</p>
+                <div class="btn-group">
+                    <a href="#add-smile" class="btn btn-primary">🌱 Share your smile</a>
+                    <a href="#tracker" class="btn btn-secondary">See our impact</a>
+                    <a href="#contact" class="btn btn-secondary">Follow us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">❤️</div>
+                    <div class="step-number">STEP 01</div>
+                    <h3>Do something kind</h3>
+                    <p>Big or small, every act of kindness counts. Help a neighbor, recycle, or simply make someone smile.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">💬</div>
+                    <div class="step-number">STEP 02</div>
+                    <h3>Share it with us</h3>
+                    <p>Tell us about it using the form below or post on Instagram/X with #SmilesAndSaplings</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🌳</div>
+                    <div class="step-number">STEP 03</div>
+                    <h3>Watch it grow</h3>
+                    <p>Every 10 smiles we collect = 1 tree planted. Track our progress in real-time below.</p>
+                </div>
+            </div>
+            <div class="note">
+                <strong>Transparency matters.</strong> We track every smile and tree openly. Check our live counter to see the impact we're making together.
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Your Smile -->
+    <section id="add-smile" class="form-section">
+        <div class="container">
+            <h2 class="section-title">Share a smile</h2>
+            <div class="form-container">
+                <div class="form-intro">
+                    <p><strong>Tell us something kind you did or saw today.</strong> It could be helping a friend, recycling, calling your family, or making someone laugh. Every small act matters.</p>
+                    <div class="form-highlight">
+                        Each act = 1 smile. Every 10 smiles = 1 tree planted 🌳
+                    </div>
+                </div>
+                <iframe class="form-embed" src="https://docs.google.com/forms/d/e/1FAIpQLSfK2i3bNRHOXfaN3fTtaL22qiGA08H_dhMMshE12RCV2ZyoOQ/viewform?usp=header" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Tracker -->
+    <section id="tracker" class="tracker">
+        <div class="container">
+            <h2 class="section-title">Our growing forest</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="smile-count">0</div>
+                    <div class="stat-label">🌼 Smiles shared</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="tree-count">0</div>
+                    <div class="stat-label">🌳 Trees planted</div>
+                </div>
+            </div>
+            <p class="tracker-note">Every number here represents someone's act of kindness.</p>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Latest updates</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🌱</div>
+                    <div class="gallery-caption">
+                        <h3>100 smiles milestone</h3>
+                        <p>That's 10 trees planted and counting. Thank you for spreading kindness with us.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🌿</div>
+                    <div class="gallery-caption">
+                        <h3>Community planting day</h3>
+                        <p>Amazing turnout at our latest tree planting event. Together we're making a real difference.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🌳</div>
+                    <div class="gallery-caption">
+                        <h3>Growing strong</h3>
+                        <p>Follow us on Instagram for photos and updates from the field. Every tree has a story.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's grow together</h2>
+            <div class="contact-intro">
+                <p>Want to help us spread smiles or plant with us? We'd love to hear from you.</p>
+            </div>
+            <div class="contact-buttons">
+                <a href="mailto:smilesandsaplings@gmail.com" class="contact-btn">📧 Email</a>
+                <a href="https://twitter.com/SmilesSaplings" target="_blank" class="contact-btn">𝕏 Twitter</a>
+                <a href="https://instagram.com/smilesandsaplings" target="_blank" class="contact-btn">📸 Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Smiles & Saplings © 2025 — Every act of kindness grows a tree</p>
+    </footer>
+
+    <script>
+        function animateCounter(id, target, duration) {
+            const element = document.getElementById(id);
+            let current = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = Math.floor(target);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('smile-count', 5, 2000);
+                    animateCounter('tree-count', 0, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.tracker'));
+    </script>
+</body>
+</html>
